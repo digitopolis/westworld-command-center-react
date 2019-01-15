@@ -13,7 +13,7 @@ const ColdStorage = (props) => (
         hosts={props.hosts}
         handleClick={props.handleClick}
         selected={props.selected}
-        />
+      />
 
     </Segment>
   </Segment.Group>

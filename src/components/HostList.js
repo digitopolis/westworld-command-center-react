@@ -10,7 +10,7 @@ const HostList = (props) => {
         key={host.id} {...host}
         handleClick={props.handleClick}
         selected={props.selected}
-        />)}
+      />)}
     </Card.Group>
   )
 }

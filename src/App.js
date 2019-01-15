@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './stylesheets/App.css'
 import { Segment } from 'semantic-ui-react';
 import { Log } from './services/Log'
+import { formatName } from './services/FormatName'
 import WestworldMap from './components/WestworldMap'
 import Headquarters from './components/Headquarters'
 
@@ -43,11 +44,11 @@ class App extends Component {
       host.area = areaName
       this.setState({
         hosts: this.state.hosts,
-        logs: [Log.notify(`${host.firstName} set in area ${areaName.split('_').map(str=>str[0].toUpperCase() + str.slice(1,str.length)).join(' ')}`), ...this.state.logs]
+        logs: [Log.notify(`${host.firstName} set in area ${formatName(areaName)}`), ...this.state.logs]
       })
     } else {
       this.setState({
-        logs: [Log.error(`Too many hosts. Cannot add ${host.firstName} to ${areaName.split('_').map(str=>str[0].toUpperCase() + str.slice(1,str.length)).join(' ')}`), ...this.state.logs]
+        logs: [Log.error(`Too many hosts. Cannot add ${host.firstName} to ${formatName(areaName)}`), ...this.state.logs]
       })
     }
   }
@@ -72,7 +73,7 @@ class App extends Component {
           areas={this.state.areas}
           selected={this.state.selected}
           handleClick={this.handleClick}
-          />
+        />
         <Headquarters
           hosts={this.state.hosts}
           areas={this.state.areas}
@@ -82,7 +83,7 @@ class App extends Component {
           handleClick={this.handleClick}
           handleMove={this.handleMove}
           handleActivate={this.handleActivate}
-          />
+        />
       </Segment>
     )
   }

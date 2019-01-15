@@ -1,13 +1,14 @@
 import '../stylesheets/HostInfo.css'
 import React, { Component } from 'react'
 import { Radio, Icon, Card, Grid, Image, Dropdown, Divider } from 'semantic-ui-react'
+import { formatName } from '../services/FormatName'
 
 
 class HostInfo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      options: props.areas.map(area => ({key: area.name, text: area.name.split('_').map(str=>str[0].toUpperCase() + str.slice(1,str.length)).join(' '), value: area.name}))
+      options: props.areas.map(area => ({key: area.name, text: formatName(area.name), value: area.name}))
     }
   }
   // state = {

@@ -1,16 +1,17 @@
 import React from 'react';
 import '../stylesheets/Area.css'
 import HostList from './HostList'
+import { formatName } from '../services/FormatName'
 
 const Area = (props) => (
 
   <div className='area' id={props.name}>
-    <h3 className='labels'>{props.name.split('_').map(str=>str[0].toUpperCase() + str.slice(1,str.length)).join(' ')}</h3>
+    <h3 className='labels'>{formatName(props.name)}</h3>
     <HostList
       hosts={props.hosts}
       selected={props.selected}
       handleClick={props.handleClick}
-      />
+    />
 
   </div>
 
